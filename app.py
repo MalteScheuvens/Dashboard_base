@@ -16,14 +16,19 @@ fig = px.bar(df, x="Fruit", y="Amount", color="City", barmode="group")
 app.layout = html.Div(children=[
     html.H1(children='Hello Dash'),
 
-    html.Div(children='''
+    html.Div(children=[
+        dcc.Markdown(children='''
         Dash: A web application framework for your data.
+        Text in Dash apps can also be written in Markdown.
+        Dash uses the [CommonMark](http://commonmark.org/)
+        specification of Markdown.
     '''),
 
-    dcc.Graph(
-        id='example-graph',
-        figure=fig
-    )
+        dcc.Graph(
+            id='example-graph',
+            figure=fig
+        )
+    ])
 ])
 
 if __name__ == '__main__':
