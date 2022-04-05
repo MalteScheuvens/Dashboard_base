@@ -2,7 +2,12 @@ from dash import Dash, html, dcc
 import plotly.express as px
 import pandas as pd
 
+import gunicorn
+from whitenoise import WhiteNoise
+
 app = Dash(__name__)
+server = app.server
+server.wsgi_app = WhiteNoise(server.wsgi_app, root='static/')
 
 df = pd.DataFrame({
     "Fruit":
