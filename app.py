@@ -4,11 +4,13 @@ import pandas as pd
 
 app = Dash(__name__)
 
-
 df = pd.DataFrame({
-    "Fruit": ["Apples", "Oranges", "Bananas", "Apples", "Oranges", "Bananas"],
-    "Amount": [4, 1, 2, 2, 4, 5],
-    "City": ["SF", "SF", "SF", "Montreal", "Montreal", "Montreal"]
+    "Fruit":
+        ["Apples", "Oranges", "Bananas", "Apples", "Oranges", "Bananas"],
+    "Amount":
+        [4, 1, 2, 2, 4, 5],
+    "City":
+        ["SF", "SF", "SF", "Montreal", "Montreal", "Montreal"]
 })
 
 fig = px.bar(df, x="Fruit", y="Amount", color="City", barmode="group")
@@ -16,19 +18,14 @@ fig = px.bar(df, x="Fruit", y="Amount", color="City", barmode="group")
 app.layout = html.Div(children=[
     html.H1(children='Hello Dash'),
 
-    html.Div(children=[
-        dcc.Markdown(children='''
+    html.Div(children='''
         Dash: A web application framework for your data.
-        Text in Dash apps can also be written in Markdown.
-        Dash uses the [CommonMark](http://commonmark.org/)
-        specification of Markdown.
     '''),
 
-        dcc.Graph(
-            id='example-graph',
-            figure=fig
-        )
-    ])
+    dcc.Graph(
+        id='example-graph',
+        figure=fig
+    )
 ])
 
 if __name__ == '__main__':
